@@ -2,8 +2,8 @@
 Python在线验证邮箱真实性，支持批量验证
 
 
-final_list = verify_istrue(['190758586@qq.com', '19075858666@qq.com'])
-print(final_list)  #{'190758586@qq.com': True, '19075858666@qq.com': False}
+final_list = verify_istrue(['190758586@qq.com', '19075858666@qq.com'])  
+print(final_list)  #{'190758586@qq.com': True, '19075858666@qq.com': False}  
     
 
 #2018-09-21 18:42:35,017 - verifyemail.py [line:23] - INFO: 正在查找邮箱服务器

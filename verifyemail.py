@@ -50,7 +50,7 @@ def verify_istrue(email):
     for key in email_obj.keys():
         host = random.choice(fetch_mx(key))
         logger.info('正在连接服务器...：%s' % host)
-        s = smtplib.SMTP(host)
+        s = smtplib.SMTP(host,timeout=10)
         for need_verify in email_obj[key]:
             helo = s.docmd('HELO zheshiwoQQ190758586.cn')
             logger.debug(helo)

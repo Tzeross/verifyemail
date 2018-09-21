@@ -1,6 +1,6 @@
 # verifyemail Python3.6.5
 
-Python在线验证邮箱真实性，支持批量验证
+Python在线验证邮箱真实性，支持批量验证，支持全部域名邮箱，支持全部域名邮箱，支持全部域名邮箱，支持全部域名邮箱
 
 
 final_list = verify_istrue(['190758586@qq.com', '19075858666@qq.com'])  

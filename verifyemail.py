@@ -5,6 +5,7 @@
 import random
 import smtplib
 import logging
+import time
 
 import dns.resolver
 
@@ -52,18 +53,15 @@ def verify_istrue(email):
         logger.info('正在连接服务器...：%s' % host)
         s = smtplib.SMTP(host, timeout=10)
         for need_verify in email_obj[key]:
-            helo = s.docmd('HELO rrrr.cn')
+            helo = s.docmd('HELO chacuo.net')
             logger.debug(helo)
 
-            send_from = s.docmd('MAIL FROM:<3121113@tengtengml.xyz>')
+            send_from = s.docmd('MAIL FROM:<3121113@chacuo.net>')
             logger.debug(send_from)
-
             send_from = s.docmd('RCPT TO:<%s>' % need_verify)
             logger.debug(send_from)
-            if send_from[0] == 250:
+            if send_from[0] == 250 or send_from[0] == 451:
                 final_res[need_verify] = True  # 存在
-            elif send_from[0] == 451:
-                final_res[need_verify] = None  # 未知
             elif send_from[0] == 550:
                 final_res[need_verify] = False  # 不存在
             else:
@@ -75,5 +73,8 @@ def verify_istrue(email):
 
 
 if __name__ == '__main__':
-    final_list = verify_istrue(['190758586444@qq.com', 'tengzhaoyou@testin.cn'])
+    final_list = verify_istrue(['tengzhaoyou@testin.cn',
+                                '190758586@qq.com',
+                                'qwer111111111111995@163.com'
+                                ])
     print(final_list)

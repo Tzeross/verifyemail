@@ -50,22 +50,30 @@ def verify_istrue(email):
     for key in email_obj.keys():
         host = random.choice(fetch_mx(key))
         logger.info('正在连接服务器...：%s' % host)
-        s = smtplib.SMTP(host,timeout=10)
+        s = smtplib.SMTP(host, timeout=10)
         for need_verify in email_obj[key]:
-            helo = s.docmd('HELO zheshiwoQQ190758586.cn')
+            helo = s.docmd('HELO rrrr.cn')
             logger.debug(helo)
 
-            send_from = s.docmd('MAIL FROM:<3123@tengtengml.xyz>')
+            send_from = s.docmd('MAIL FROM:<3121113@tengtengml.xyz>')
             logger.debug(send_from)
 
             send_from = s.docmd('RCPT TO:<%s>' % need_verify)
             logger.debug(send_from)
-            final_res[need_verify] = True if send_from[0] == 250 else False
+            if send_from[0] == 250:
+                final_res[need_verify] = True  # 存在
+            elif send_from[0] == 451:
+                final_res[need_verify] = None  # 未知
+            elif send_from[0] == 550:
+                final_res[need_verify] = False  # 不存在
+            else:
+                final_res[need_verify] = None  # 未知
+
         s.close()
 
     return final_res
 
 
 if __name__ == '__main__':
-    final_list = verify_istrue(['190758586@qq.com', '19075858666@qq.com'])
+    final_list = verify_istrue(['190758586444@qq.com', 'tengzhaoyou@testin.cn'])
     print(final_list)

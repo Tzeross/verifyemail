@@ -73,8 +73,7 @@ def verify_istrue(email):
 
 
 if __name__ == '__main__':
-    final_list = verify_istrue(['tengzhaoyou@testin.cn',
-                                '190758586@qq.com',
+    final_list = verify_istrue(['190758586@qq.com',
                                 'qwer111111111111995@163.com'
                                 ])
     print(final_list)

@@ -56,7 +56,7 @@ def verify_istrue(email):
             helo = s.docmd('HELO chacuo.net')
             logger.debug(helo)
 
-            send_from = s.docmd('MAIL FROM:<3121113@chacuo.net>')
+            send_from = s.docmd('MAIL FROM:<3121113@sds.net.ddas.cc>') #声明自己的邮箱，自己改
             logger.debug(send_from)
             send_from = s.docmd('RCPT TO:<%s>' % need_verify)
             logger.debug(send_from)
